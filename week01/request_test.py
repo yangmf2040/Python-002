@@ -10,6 +10,7 @@ response=requests.get(myurl,headers=header)
 bs_info = bs(response.text,'html.parser')
 for tags in bs_info.find_all('div',attrs={'class':'hd'}):
 #for tags in bs_info.find_all('div',class_='hd'):
-    for atag in tags.find_all('a'):
+    for atag in tags.find_all('a'):        
         print(atag.get('href'))
         print(atag.find('span').text)
+           
