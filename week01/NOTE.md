@@ -1,4 +1,4 @@
-#学习笔记。
+#学习笔记  
 ##requests 
 https://requests.readthedocs.io/zh_CN/latest/user/quickstart.html
 安装
