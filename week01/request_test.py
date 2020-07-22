@@ -8,9 +8,12 @@ response=requests.get(myurl,headers=header)
 #print(f'返回码是: {response.status_code}')
 
 bs_info = bs(response.text,'html.parser')
-for tags in bs_info.find_all('div',attrs={'class':'hd'}):
+#for tags in bs_info.find_all('div',attrs={'class':'hd'}):
 #for tags in bs_info.find_all('div',class_='hd'):
+for tags in bs_info.find_all('div','hd'):
     for atag in tags.find_all('a'):        
-        print(atag.get('href'))
+        #print(atag.get('href'))
+        print(atag['href'])
         print(atag.find('span').text)
+        #print(atag.find('span').string)
            
