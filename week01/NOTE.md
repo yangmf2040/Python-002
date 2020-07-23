@@ -19,6 +19,13 @@ header = {'user-agent':user_agent}
 myurl='https://movie.douban.com/top250'
 response=requests.get(myurl,headers=header)
 
+查看请求headers
+print(response.request.headers)
+
+查看返回headers
+print(response.headers)
+
+
 查看返回的状态码
 response.status_code
 
@@ -109,6 +116,10 @@ movie1.to_csv('./movie1.csv',encoding='utf8',index=False,header=False)
 2.构造所有页面的url
 3.用循环将url依次传入到函数，得到每一页的电影名称和url
 
+
+scrapy  
+https://docs.scrapy.org/en/latest/topics/architecture.html  
+pip install scrapy  
 
 
 
