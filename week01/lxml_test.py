@@ -10,10 +10,14 @@ response=requests.get(myurl,headers=header)
 
 selector = lxml.etree.HTML(response.text)
 #selector = lxml.etree.HTML(requests.get(myurl,headers=header).text)
-film_name = selector.xpath('//*[@id="content"]/h1/span[1]/text()')
+# //*[@id="content"]/h1/span[1]
+#se1 = selector.xpath('//div[@id="content"]')
+#//*[@id="info"]/span[11]
+
+film_name = selector.xpath('//div[@id="content"]/h1/span[1]/text()')
 print(f'电影名称：{film_name}')
 
-film_date = selector.xpath('//*[@id="info"]/span[10]/text()')
+film_date = selector.xpath('//div[@id="info"]/span[@property="v:initialReleaseDate"]/text()')
 print(f'电影名称：{film_date}')
 
 film_score = selector.xpath('//*[@id="interest_sectl"]/div[1]/div[2]/strong/text()')
