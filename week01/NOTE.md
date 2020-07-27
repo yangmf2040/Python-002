@@ -157,9 +157,20 @@ movies = selector(response=response).xpath('//div[@class="hd"])
 如何调试
 print 或 在浏览器里 ctrl+F  
 如何从返回结果中提取文本  
-r.extract()  如果匹配了多个tag，全部释放
-r.extract_first()  如果匹配了多个tag，只释放第一个 
+r.extract() = r.getall() 如果匹配了多个tag，全部释放
+r.extract_first() = r.get()  如果匹配了多个tag，只释放第一个 
 r.extract_first().strip() 处理掉前后的空格 
+不同之处，getall()总会返回list，get()总会返回一个结果  
+而extract()
+            
+print(r.xpath('./a/@href').getall())
+print(r.xpath('./a/text()').getall())
+
+xpath 路径
+/   从根开始匹配
+//  第一个匹配的地方，不管前面有什么
+.   相对路径，从上次匹配的地方下面开始找
+..  相对路径，从上次匹配的地方的下面的兄弟节点开始找
 
 
 运行spider
@@ -176,9 +187,13 @@ movies爬虫 首先对start_urls属性中定义的 URL 发出请求，并将 响
 settings
 放开 USER_AGENT、DOWNLOAD_DELAY=1
 
-return item 会到 pipeline
+parse func return item 会到 pipeline
+
 pipeline 里的方法一定要返回 item 否则报错
 
+settings里放开 item_pipeline
+
+scrapy.request(dont_filter=True) 解除去重，默认scrapy自带去重功能
 
 
 
